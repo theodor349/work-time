@@ -1,0 +1,103 @@
+.root {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.activity-title {
+    text-align: center;
+}
+
+.activity-title-container {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.timer-button {
+    opacity: 0.9;
+    width: 100%;
+}
+
+.timer-button:hover {
+    opacity: 1;
+    transform: translateY(0);
+    transition-duration: .35s;
+}
+
+.timer-button:disabled {
+    opacity: 1;
+}
+
+.start-button {
+    background-color: #228B22;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 2px 3px 0 rgba(0, 0, 0, 0.06);
+}
+
+.start-button:disabled {
+    background-color: #8BC3A4 ;
+}
+
+.end-button {
+    background-color: #FF0000;
+}
+
+.end-button:disabled {
+    background-color: #DBBDBD;
+}
+
+
+.activity-indicator-container {
+    display: flex;
+    align-items: center;
+}
+
+.activity-indicator {
+    height: 16px;
+    border-radius: 8px;
+    width: 16px;
+    padding: 0px;
+    margin: 8px;
+}
+
+.activity-indicator-active {
+    background-color: #228B22 ;
+}
+
+.activity-indicator-inactive {
+    background-color: #FF0000;
+}
+
+.activity-title-text-container {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+}
+
+.center {
+    text-align: center;
+}
+
+.time-text {
+    text-align: center;
+    margin-right: 8px;
+}
+
+.activity-idicator-title-container {
+    display: flex;
+    align-items: center;
+}
+
+.time-text-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
