@@ -11,6 +11,7 @@
 .activity-title-container {
     display: grid;
     grid-auto-flow: column;
+    height: 48px;
 }
 
 .button-container {
@@ -43,7 +44,7 @@
 }
 
 .start-button:disabled {
-    background-color: #8BC3A4 ;
+    background-color: #8BC3A4;
 }
 
 .end-button {
@@ -69,7 +70,7 @@
 }
 
 .activity-indicator-active {
-    background-color: #228B22 ;
+    background-color: #228B22;
 }
 
 .activity-indicator-inactive {
@@ -87,7 +88,7 @@
 }
 
 .time-text {
-    text-align: center;
+    text-align: end;
     margin-right: 8px;
 }
 
@@ -97,7 +98,7 @@
 }
 
 .time-text-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: end;
+    display: grid;
+    gap: 0px;
+    grid-auto-flow: column;
 }

@@ -17,8 +17,8 @@ export const ActicityOverview = ({ className }: ActicityOverviewProps) => {
             <div />
             <div>
                 <ActivityTimer activity={{name: "AAU ITS", id: 1, durationMs: 37000000, isActive: false}} />
-                <ActivityTimer activity={{name: "Trifork", id: 1, durationMs: 5.832e+7, isActive: true}} />
-                <ActivityTimer activity={{name: "Netcompany", id: 1, durationMs: 3720000, isActive: false}} />
+                <ActivityTimer activity={{name: "Trifork", id: 2, durationMs: 5.832e+7, isActive: true}} />
+                <ActivityTimer activity={{name: "Netcompany", id: 2, durationMs: 3720000, isActive: false}} />
             </div>
         </div>
     );

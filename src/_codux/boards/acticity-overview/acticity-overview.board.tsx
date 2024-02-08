@@ -6,6 +6,9 @@ export default createBoard({
     Board: () => <ActicityOverview />,
     isSnippet: true,
     environmentProps: {
-        canvasWidth: 755,
+        canvasWidth: 2125,
+        windowWidth: 430,
+        windowHeight: 932,
+        canvasHeight: 1003,
     },
 });

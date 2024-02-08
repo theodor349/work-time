@@ -3,10 +3,14 @@ import { ActivityTimer } from '../../../components/activity-timer/activity-timer
 
 export default createBoard({
     name: 'ActivityTimer',
-    Board: () => <ActivityTimer activity={{name: "AAU ITS", id: 1, duration: 5.832e+7, isActive: false}} />,
+    Board: () => (
+        <ActivityTimer
+            activity={{ name: 'AAU ITS', id: 1, durationMs: 5.832e7, isActive: false }}
+        />
+    ),
     isSnippet: true,
     environmentProps: {
-        canvasWidth: 706,
+        canvasWidth: 904,
         canvasHeight: 5,
     },
 });

@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import styles from './activity-timer.module.scss';
 import { Activity } from '../../types/activity';
+import { useState } from 'react';
 
 export interface ActivityTimerProps {
     className?: string;
@@ -11,17 +12,14 @@ export interface ActivityTimerProps {
  * This component was created using Codux's Default new component template.
  * To create custom component templates, see https://help.codux.com/kb/en/article/kb16522
  */
-export const ActivityTimer = ({
-    className,
-    activity
-}: ActivityTimerProps) => {
+export const ActivityTimer = ({ className, activity }: ActivityTimerProps) => {
+    const [enabled, setEnabled] = useState(activity.isActive);
 
-    const startActivity = function(): void {
-        console.log("Start");
-        activity.isActive = !activity.isActive;
+    const startActivity = function (): void {
+        setEnabled(!enabled);
     };
-    const endActivity = function(): void {
-        activity.isActive = !activity.isActive;
+    const endActivity = function (): void {
+        setEnabled(!enabled);
     };
 
     return (
@@ -31,7 +29,7 @@ export const ActivityTimer = ({
                     <div
                         className={classNames(
                             styles['activity-indicator'],
-                            activity.isActive
+                            enabled
                                 ? styles['activity-indicator-active']
                                 : styles['activity-indicator-inactive']
                         )}
@@ -40,21 +38,24 @@ export const ActivityTimer = ({
                 </div>
                 <div className={styles['time-text-container']}>
                     <h3 className={styles['time-text']}>
-                        {Math.floor(activity.durationMs / 36e5) + 'h ' + new Date(activity.durationMs).getMinutes() + 'm'}
+                        {Math.floor(activity.durationMs / 36e5) +
+                            'h ' +
+                            new Date(activity.durationMs).getMinutes() +
+                            'm'}
                     </h3>
                 </div>
             </div>
             <div className={styles['button-container']}>
                 <button
                     className={classNames(styles['timer-button'], styles['start-button'])}
-                    disabled={activity.isActive}
+                    disabled={enabled}
                     onClick={startActivity}
                 >
                     Start
                 </button>
                 <button
                     className={classNames(styles['timer-button'], styles['end-button'])}
-                    disabled={!activity.isActive}
+                    disabled={!enabled}
                     onClick={endActivity}
                 >
                     End
