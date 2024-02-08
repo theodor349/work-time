@@ -15,17 +15,9 @@ function doGet(){
     return result;
 }
 
-function addActivity(activities, id, name, durationMs, isActive){
-    activities.push({
-        id: id,
-        name: name,
-        durationMs: durationMs,
-        isActive: isActive
-    });
-}
-
 function getActivity(sheetBook, activityId){
-    var name = sheetBook.getRange(columns[activityId] + "1").getValue();
+    var nameRange = columns[activityId * 3] + "1"; 
+    var name = sheetBook.getRange(nameRange).getValue();
     var entries = getEntries(sheetBook, activityId);
     var duration = calculateDurationInMs(entries);
     var isActive = calculateIsActive(entries);
@@ -54,6 +46,6 @@ function calculateIsActive(entries){
     if(entries.length === 0)
       return false;
 
-    var isActive = entries[entries.length - 1].stop.length === 0;
+    var isActive = entries[entries.length - 1].stop === undefined;
     return isActive;
 }

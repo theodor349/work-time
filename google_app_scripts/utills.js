@@ -2,7 +2,7 @@ var sheetId = "<SheetId>";
 
 
 
-var columns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U'];
+var columns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'AA'];
 const maxActivities = 9;
 
 function getSpreadSheetBook(){
@@ -13,7 +13,8 @@ function getSpreadSheetBook(){
 
 function getEntries(sheetBook, activityId){
     var entries = [];
-    var range = sheetBook.getRange(columns[activityId * 3] + "3:" + columns[activityId * 3 + 1]).getValues();
+    var rangeId = columns[activityId * 3] + "3:" + columns[activityId * 3 + 1];
+    var range = sheetBook.getRange(rangeId).getValues();
     for (var i = 0; i < range.length; i++) {
       if(range[i][0].length === 0)
         continue;

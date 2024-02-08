@@ -75,8 +75,6 @@ function testPostStart(){
     if(res.success === false){
       throw new Error("Should have been able to end activity");
     }
-  
-  
   }
   
   
