@@ -2,6 +2,14 @@ import classNames from 'classnames';
 import styles from './activity-timer.module.scss';
 import { Activity } from '../../types/activity';
 import { useState } from 'react';
+import axios from 'axios';
+
+interface IChangeActivityState {
+    activityId: number;
+    startActivity: number;
+    title: string;
+    date: Date;
+}
 
 export interface ActivityTimerProps {
     className?: string;

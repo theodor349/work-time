@@ -1,6 +1,14 @@
 import classNames from 'classnames';
 import styles from './acticity-overview.module.scss';
 import { ActivityTimer } from '../activity-timer/activity-timer';
+import { Loading } from '../loading/loading';
+import { useState, useEffect } from 'react';
+import { Activity } from '../../types/activity';
+import axios from 'axios';
+
+interface IGetRequest{
+    activities: Activity[];
+}
 
 export interface ActicityOverviewProps {
     className?: string;
@@ -12,14 +20,45 @@ export interface ActicityOverviewProps {
  */
 
 export const ActicityOverview = ({ className }: ActicityOverviewProps) => {
-    return (
-        <div className={classNames(styles.root, className)}>
-            <div />
-            <div>
-                <ActivityTimer activity={{name: "AAU ITS", id: 1, durationMs: 37000000, isActive: false}} />
-                <ActivityTimer activity={{name: "Trifork", id: 2, durationMs: 5.832e+7, isActive: true}} />
-                <ActivityTimer activity={{name: "Netcompany", id: 2, durationMs: 3720000, isActive: false}} />
+    const [activities, setActivities] = useState<Activity[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string>('');
+
+    useEffect(() => {
+        axios
+            .get<IGetRequest>(
+                ''
+            )
+            .then((response) => {
+                console.log("Data: " + response.data);
+                setActivities(response.data.activities);
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.log(error);
+                setError('An error occurred while fetching data: ' + error.message);
+                setLoading(false);
+            });
+            console.log(activities);
+    }, []);
+
+    if(loading){
+        return (
+            <div className={classNames(styles.root, className)}>
+                <Loading/>
             </div>
-        </div>
-    );
+        );
+    }
+    else {
+        return (
+            <div className={classNames(styles.root, className)}>
+                <div />
+                <div>
+                    {activities.map((activity) => (
+                        <ActivityTimer activity={activity} key={activity.id} />
+                    ))}
+                </div>
+            </div>
+        );
+    }
 };
