@@ -1,7 +1,14 @@
-function testPostStart(){
+function testJson(){
+    var json = '{"id": 4,"startActivity": true,"endActivity": false,"date": "2024-01-01 12.00.00"}';
+    var input = JSON.parse(json);
+    var res = doPost(input);
+    console.log(res);
+  }
+  
+  function testPostStart(){
     doPost({
       parameter: {
-        id: 4,
+        id: 4, // Fails if undefined
         startActivity: true,
         endActivity: false,
         date: "2019-01-01 12.00.00"
@@ -79,25 +86,32 @@ function testPostStart(){
   
   
   function doPost(request){
+      const { parameter, postData: { contents, type } = {} } = request;
+      console.log(request);
       var success = true;
       var errorMessage = "";
       var sb = getSpreadSheetBook();
   
       try {
-          var request = parseRequest(request);
-          insertData(request, sb);
+          var input = JSON.parse(contents);
+          console.log("ActivityId: " + input.activityId);
+          console.log("IsStart: " + input.startActivity);
+          console.log("IsEnd: " + input.endActivity);
+          console.log("Date: " + input.date);
+          insertData(input, sb);
       }
       catch(e) {
           success = false;
-          errorMessage = e.message;
+          errorMessage = e.errorMessage;
+          console.error(e);
       }
   
       var result = {
-          succeeded: success,
+          success: success,
           errorMessage: errorMessage
       }
       console.log(result);
-      return result;
+      return ContentService.createTextOutput(JSON.stringify(result)).setMimeType(ContentService.MimeType.JSON); 
   }
   
   function insertData(request, sb){
@@ -150,27 +164,15 @@ function testPostStart(){
         }
       }
   
+      console.log("Active row: " + result);
       return result;
   }
   
   function insertValue(sb, activityId, row, date, isStart){
       var column = columns[activityId * 3 + (isStart ? 0 : 1)];
       var rowId = (row + 3);
+      console.log("Overriding cell: " + column + rowId + " with " + date);
       sb.getRange(column + rowId).setValue(date);
-  }
-  
-  function parseRequest(request){
-      var activityId = request.parameter.id;
-      var startActivity = request.parameter.startActivity;
-      var endActivity = request.parameter.endActivity;
-      var date = request.parameter.date;
-      var request = {
-          activityId: activityId,
-          startActivity: startActivity,
-          endActivity: endActivity,
-          date: date
-      }
-      return request;
   }
   
   

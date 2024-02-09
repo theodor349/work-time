@@ -11,8 +11,7 @@ function doGet(){
     var result = {
         activities: activities
     }
-    console.log(result);
-    return result;
+    return ContentService.createTextOutput(JSON.stringify(result)).setMimeType(ContentService.MimeType.JSON); 
 }
 
 function getActivity(sheetBook, activityId){
