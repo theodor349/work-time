@@ -3,6 +3,6 @@ import { Loading } from '../../../components/loading/loading';
 
 export default createBoard({
     name: 'Loading',
-    Board: () => <Loading />,
+    Board: () => <Loading size={640} />,
     isSnippet: true,
 });

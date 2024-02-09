@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import { Activity } from '../../types/activity';
 import axios from 'axios';
 
-interface IGetRequest{
+interface IGetRequest {
     activities: Activity[];
 }
 
@@ -30,7 +30,7 @@ export const ActicityOverview = ({ className }: ActicityOverviewProps) => {
                 ''
             )
             .then((response) => {
-                console.log("Data: " + response.data);
+                console.log('Data: ' + response.data);
                 setActivities(response.data.activities);
                 setLoading(false);
             })
@@ -39,19 +39,18 @@ export const ActicityOverview = ({ className }: ActicityOverviewProps) => {
                 setError('An error occurred while fetching data: ' + error.message);
                 setLoading(false);
             });
-            console.log(activities);
+        console.log(activities);
     }, []);
 
-    if(loading){
+    if (loading) {
         return (
-            <div className={classNames(styles.root, className)}>
-                <Loading/>
+            <div className={styles.root}>
+                <Loading size={200} />
             </div>
         );
-    }
-    else {
+    } else {
         return (
-            <div className={classNames(styles.root, className)}>
+            <div className={styles.root}>
                 <div />
                 <div>
                     {activities.map((activity) => (

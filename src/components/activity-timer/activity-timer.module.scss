@@ -67,7 +67,6 @@
     height: 16px;
     border-radius: 8px;
     width: 16px;
-    padding: 0px;
     margin: 8px;
 }
 
@@ -97,6 +96,8 @@
 .activity-idicator-title-container {
     display: flex;
     align-items: center;
+    gap: 4px;
+    margin: 4px;
 }
 
 .time-text-container {
@@ -104,3 +105,5 @@
     gap: 0px;
     grid-auto-flow: column;
 }
+
+.loading-container {}
