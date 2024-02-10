@@ -5,6 +5,7 @@ import { Loading } from '../loading/loading';
 import { useState, useEffect } from 'react';
 import { Activity } from '../../types/activity';
 import axios from 'axios';
+import { url } from '../../variables';
 
 interface IGetRequest {
     activities: Activity[];
@@ -27,10 +28,9 @@ export const ActicityOverview = ({ className }: ActicityOverviewProps) => {
     useEffect(() => {
         axios
             .get<IGetRequest>(
-                ''
+                `${url}?type=get`
             )
             .then((response) => {
-                console.log('Data: ' + response.data);
                 setActivities(response.data.activities);
                 setLoading(false);
             })
@@ -39,13 +39,12 @@ export const ActicityOverview = ({ className }: ActicityOverviewProps) => {
                 setError('An error occurred while fetching data: ' + error.message);
                 setLoading(false);
             });
-        console.log(activities);
     }, []);
 
     if (loading) {
         return (
             <div className={styles.root}>
-                <Loading size={200} />
+                <Loading size={200} loading={true} />
             </div>
         );
     } else {
@@ -54,7 +53,7 @@ export const ActicityOverview = ({ className }: ActicityOverviewProps) => {
                 <div />
                 <div>
                     {activities.map((activity) => (
-                        <ActivityTimer activity={activity} key={activity.id} />
+                        <ActivityTimer inputActivity={activity} key={activity.id} />
                     ))}
                 </div>
             </div>
