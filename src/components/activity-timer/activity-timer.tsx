@@ -4,7 +4,6 @@ import { Activity } from '../../types/activity';
 import { useState } from 'react';
 import axios from 'axios';
 import { Loading } from '../loading/loading';
-import { url } from '../../variables';
 
 interface IChangeActivityState {
     activityId: number;
@@ -20,6 +19,8 @@ interface IPostResponse {
 export interface ActivityTimerProps {
     className?: string;
     inputActivity: Activity;
+    selectedDateTime: Date;
+    url: string;
 }
 
 /**
@@ -27,14 +28,15 @@ export interface ActivityTimerProps {
  * To create custom component templates, see https://help.codux.com/kb/en/article/kb16522
  */
 
-export const ActivityTimer = ({ className, inputActivity }: ActivityTimerProps) => {
+export const ActivityTimer = ({ className, inputActivity, selectedDateTime, url }: ActivityTimerProps) => {
     const [activity, setActivity] = useState(inputActivity);
     const [enabled, setEnabled] = useState(activity.isActive);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<string>('');
 
     const getDate = function (): string {
-        const date = new Date();
+        const date = selectedDateTime;
+        console.log(date);
         return date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate() + " " + date.getHours() + "." + date.getMinutes() + "." + date.getSeconds();
     }
 

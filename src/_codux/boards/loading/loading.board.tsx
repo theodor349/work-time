@@ -5,4 +5,7 @@ export default createBoard({
     name: 'Loading',
     Board: () => <Loading size={640} />,
     isSnippet: true,
+    environmentProps: {
+        canvasWidth: 1344,
+    },
 });
