@@ -4,7 +4,7 @@ In order to use it you have to setup a Google Sheet and a Google Apps Script, in
 
 ## Setup Google Sheets 
  1. Create a Google Sheet in Google Drive 
- 2. Paste the following into the 'A1' cell
+ 2. Paste the following into the `A1` cell
     - Copy the 3rd row as many times as you want 
         - If you e.g. copy it 100 times, then you are able to insert 100 entries into each comlum
     - Replace `Activity 1` and `Activity 2` with names that fit your activities
