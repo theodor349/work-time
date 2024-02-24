@@ -39,14 +39,21 @@ In order to use it you have to setup a Google Sheet and a Google Apps Script, in
 ## Setup Google Sheets 
  1. Create a Google Sheet in Google Drive 
  2. Paste the following into the 'A1' cell
-    - Replace `Activity 1` and `Activity 1` with names that fit your activities
-    - If you want more activities, just add something to the upper right cell of each activity column e.g. 'G1'
+    - Copy the 3rd row as many times as you want 
+        - If you e.g. copy it 100 times, then you are able to insert 100 entries into each comlum
+    - Replace `Activity 1` and `Activity 2` with names that fit your activities
+    - If you want more activities, just add something to the upper left cell of each activity column e.g. 'G1'
 ``` 
-Activity 1		0.00.00	Activity 2		0.00.00			0.00.00			0.00.00			0.00.00			0.00.00			0.00.00			0.00.00			0.00.00
-Start	End		Start	End		Start	End		Start	End		Start	End		Start	End		Start	End		Start	End		Start	End	
+Activity 1		=sum(C3:C)	Activity 2		=sum(F3:F)			=sum(I3:I)			=sum(L3:L)			=sum(O3:O)			=sum(R3:R)			=sum(U3:U)			=sum(X3:X)			=sum(AA3:AA)
+Start	End	Duration	Start	End	Duration	Start	End	Duration	Start	End	Duration	Start	End	Duration	Start	End	Duration	Start	End	Duration	Start	End	Duration	Start	End	Duration
+		=IF(OR(ISBLANK(A3),ISBLANK(B3)),,B3-A3)			=IF(OR(ISBLANK(D3),ISBLANK(E3)),,E3-D3)			=IF(OR(ISBLANK(G3),ISBLANK(H3)),,H3-G3)			=IF(OR(ISBLANK(J3),ISBLANK(K3)),,K3-J3)			=IF(OR(ISBLANK(M3),ISBLANK(N3)),,N3-M3)			=IF(OR(ISBLANK(P3),ISBLANK(Q3)),,Q3-P3)			=IF(OR(ISBLANK(S3),ISBLANK(T3)),,T3-S3)			=IF(OR(ISBLANK(V3),ISBLANK(W3)),,W3-V3)			=IF(OR(ISBLANK(Y3),ISBLANK(Z3)),,Z3-Y3)
 ``` 
  3. Copy the `SheetId` for use in the Google Apps Script
     - You find this in the url `https://docs.google.com/spreadsheets/d/<SheetId>/edit#gid=0`
+ 4. Format the sheet, I have done it as shown on the image below
+    - To be able to show the duration as a duration and not just a number, make sure to format the cell as `Duration`
+
+![My formatting of the Sheet](image.png)
 
 ## Google Apps Script
  1. Create Google Apps Script in Google Drive

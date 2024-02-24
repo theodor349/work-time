@@ -5,6 +5,27 @@ function testGetAll(){
   doGet({ parameter: { type: "get" } })
 }
 
+function testStart(){
+  doGet({ parameter: { 
+    type: "post",
+    activityId: 0,
+    startActivity: "true",
+    endActivity: "false",
+    date: "2/24/2024 12:15:00",
+  }})
+}
+
+function testStop(){
+  doGet({ parameter: { 
+    type: "post",
+    activityId: 0,
+    startActivity: "false",
+    endActivity: "true",
+    date: "2/24/2024 13:12:15",
+  }})
+}
+
+
 function getSpreadSheetBook(){
     var propertyService = PropertiesService.getScriptProperties();
     var sheetId = propertyService.getProperty("sheetId");
@@ -29,6 +50,7 @@ function getEntries(sheetBook, activityId){
 }
 
 function doGet(request) {
+  console.log(request);
   var type = request.parameter.type;
   if(type === "get"){
     return getActivities();
@@ -37,17 +59,21 @@ function doGet(request) {
     return getOneActivity(request.parameter.activityId);
   }
   else if(type === "post") {
+    var date1 = Date.parse(request.parameter.date);
+    var date2 = new Date(date1);
+    var date3 = new Date(request.parameter.date);
     return postData({
       activityId: request.parameter.activityId,
       startActivity: request.parameter.startActivity,
       endActivity: request.parameter.endActivity,
-      date: request.parameter.date,
+      date: date2,
     });
   }
 }
 
 
 function postData(request){
+    console.log(request);
     var success = true;
     var errorMessage = "";
     var sb = getSpreadSheetBook();
