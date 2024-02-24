@@ -29,6 +29,9 @@ export const UrlSelector = ({ className, updateUrl }: UrlSelectorProps) => {
                 />
                 <button onClick={() => updateUrl(url)}>Update</button>
             </div>
+            <div>
+                <p>Instruction on how to set this up, can be found on <a href="https://github.com/theodor349/work-time">GitHub</a></p>
+            </div>
         </div>
     );
 };
