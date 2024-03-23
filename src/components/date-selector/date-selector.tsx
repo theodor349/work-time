@@ -35,7 +35,11 @@ export const DateSelector = ({ className, updateSelectedDateTime }: DateSelector
                         }}
                         />
                 </LocalizationProvider>
-                <button className={styles['url-button']} onClick={() => setSelected(dayjs())}>Reset</button>
+                <button className={styles['url-button']} onClick={() =>{
+                            updateSelectedDateTime(dayjs().toDate());
+                            setSelected(dayjs());
+                    } 
+                }>Reset</button>
             </div>
         </div>
     );

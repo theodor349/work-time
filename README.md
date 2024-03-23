@@ -4,7 +4,7 @@ In order to use it you have to setup a Google Sheet and a Google Apps Script, in
 
 ## Setup Google Sheets 
  1. Create a Google Sheet in Google Drive 
- 2. Paste the following into the `A1` cell
+ 2. Paste the following into the 'A1' cell
     - Copy the 3rd row as many times as you want 
         - If you e.g. copy it 100 times, then you are able to insert 100 entries into each comlum
     - Replace `Activity 1` and `Activity 2` with names that fit your activities
@@ -28,7 +28,7 @@ Start	End	Duration	Start	End	Duration	Start	End	Duration	Start	End	Duration	Star
     - Press `Google Apps Script`
  2. Enter a name for the Apps Script e.g. `Work Time Script`
  3. Change the name of the Sheet from e.g. `Sheet1` to `Data`
- 4. Copy the contents of `google_apps_scripts/Code.gs` into the `Code.gs` file in Google Apps Script
+ 4. Copy the contents of [`google_apps_scripts/Code.gs`](https://github.com/theodor349/work-time/blob/main/google_apps_scripts/Code.gs) into the `Code.gs` file in Google Apps Script
  5. Setup `sheetId` property
     - Navigate to `Project Settings`
     - Press `Add script property`
